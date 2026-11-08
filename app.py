@@ -11,6 +11,15 @@ def search_books(books, query):
     ]
 
 
+def remove_book(books, title):
+    """Remove the book with the given title. Return True if removed."""
+    for book in books:
+        if book["title"].lower() == title.lower():
+            books.remove(book)
+            return True
+    return False
+
+
 def main():
     print_banner()
 
