@@ -73,7 +73,11 @@ def add_book(title, author):
     books = load_books()
     books.append({"title": title, "author": author})
     save_books(books)
+def list_books():
+    for i, book in enumerate(load_books(), start=1):
+        print(f"{i}. {book['title']} - {book['author']}")
 def main():
     print_banner()
+    list_books()
 if __name__ == "__main__":
     main()
