@@ -29,6 +29,10 @@ def add_book(title, author):
 def list_books():
     for i, book in enumerate(load_books(), start=1):
         print(f"{i}. {book['title']} - {book['author']}")
+        
+def print_banner():
+    print("=== Library Tracker ===")
+    print("Version 1.0 - by Samer")
 
 
 def main():
