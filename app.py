@@ -6,7 +6,32 @@ BOOKS_FILE = "books.json"
 def print_banner():
     print("=" * 32)
     print("  Library Tracker - Search & Remove")
+    print("  Version 1.0")
     print("=" * 32)
+
+
+def load_books():
+    try:
+        with open(BOOKS_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return []
+
+
+def save_books(books):
+    with open(BOOKS_FILE, "w", encoding="utf-8") as f:
+        json.dump(books, f, indent=2)
+
+
+def add_book(title, author):
+    books = load_books()
+    books.append({"title": title, "author": author})
+    save_books(books)
+
+
+def list_books():
+    for i, book in enumerate(load_books(), start=1):
+        print(f"{i}. {book['title']} - {book['author']}")
 
 
 def search_books(books, query):
@@ -54,16 +79,10 @@ def search_remove_menu(books):
 
 def main():
     print_banner()
-    try:
-        with open(BOOKS_FILE, encoding="utf-8") as f:
-            books = json.load(f)
-    except FileNotFoundError:
-        books = []
-
+    books = load_books()
+    list_books()
     search_remove_menu(books)
-
-    with open(BOOKS_FILE, "w", encoding="utf-8") as f:
-        json.dump(books, f, indent=2)
+    save_books(books)
 
 
 if __name__ == "__main__":
