@@ -66,4 +66,5 @@ def main():
         json.dump(books, f, indent=2)
 
 
-if __name__ ==
+if __name__ == "__main__":
+    main()
