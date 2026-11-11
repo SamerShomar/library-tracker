@@ -11,7 +11,7 @@ def load_books():
     try:
         with open(BOOKS_FILE, "r", encoding="utf-8") as f:
             return json.load(f)
-    except FileNotFoundError:
+    except (FileNotFoundError, json.JSONDecodeError):
         return []
 
 
