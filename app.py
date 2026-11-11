@@ -11,7 +11,7 @@ def print_banner():
 
 def search_books(books, query):
     """Return books whose title or author contains the query."""
-    query = query.lower()
+    query = query.strip().lower()
     return [
         book for book in books
         if query in book["title"].lower() or query in book["author"].lower()
@@ -66,5 +66,4 @@ def main():
         json.dump(books, f, indent=2)
 
 
-if __name__ == "__main__":
-    main()
+if __name__ ==
